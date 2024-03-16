@@ -1,0 +1,12 @@
+{
+  "name": "location-treasure-hunt",
+  "description": "Go on a treasure hunt to find relevant locations based on hints",
+  "version": "1.0.0",
+  "author": "Jeremy Colin",
+  "license": "MIT",
+  "packageManager": "pnpm@8.15.4+sha256.cea6d0bdf2de3a0549582da3983c70c92ffc577ff4410cbf190817ddc35137c2",
+  "devDependencies": {
+    "dotenv": "^16.4.5",
+    "typescript": "^5.4.2"
+  }
+}
