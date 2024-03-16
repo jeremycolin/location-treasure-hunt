@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "build": "tsc -p tsconfig.json",
-    "start": "node dist/index.js"
+    "start": "cd packages/server && fastify node dist/index.js"
   },
   "dependencies": {
     "@fastify/postgres": "^5.2.2",

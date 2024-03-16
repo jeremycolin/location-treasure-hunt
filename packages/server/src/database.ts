@@ -5,7 +5,7 @@ import fastifyPlugin from "fastify-plugin";
 import pastifyPostgres from "@fastify/postgres";
 
 export const setupDatabase = fastifyPlugin(async (fastify, options) => {
-  // wait for railway to set up the database
+  // wait for railway to set up private network
   await new Promise((resolve) => setTimeout(resolve, 1000));
 
   try {
