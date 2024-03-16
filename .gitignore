@@ -11,3 +11,5 @@ report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
 
 # Build outputs
 dist/
+
+.env
