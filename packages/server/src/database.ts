@@ -5,6 +5,8 @@ import fastifyPlugin from "fastify-plugin";
 import pastifyPostgres from "@fastify/postgres";
 
 export const setupDatabase = fastifyPlugin(async (fastify, options) => {
+  await new Promise((resolve) => setTimeout(resolve, 5000));
+
   await fastify.register(pastifyPostgres, {
     connectionString: process.env.DATABASE_PRIVATE_URL,
   });
