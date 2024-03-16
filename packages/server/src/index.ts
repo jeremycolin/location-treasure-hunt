@@ -1,14 +1,13 @@
 import fastify from "fastify";
+import { config } from "./config";
 import { setupDatabase } from "./database";
 import { treasureHuntsRoutes } from "./treasure-hunts";
-
-const PORT = process.env.PORT ? parseInt(process.env.PORT, 10) : 8080;
 
 async function startServer() {
   const server = fastify({ logger: true });
   await server.register(setupDatabase);
   server.register(treasureHuntsRoutes);
-  server.listen({ port: PORT }, (err, address) => {
+  server.listen({ port: config.PORT, host: config.HOST }, (err, address) => {
     if (err) {
       console.error(err);
     }
