@@ -12,6 +12,7 @@ export const treasureHuntsRoutes = fastifyPlugin(async (fastify, options) => {
     } catch (err) {
       console.error(err);
     } finally {
+      console.log("sending reply on /treasure-hunts");
       reply.send({ hello: "world" });
     }
   });
@@ -20,6 +21,7 @@ export const treasureHuntsRoutes = fastifyPlugin(async (fastify, options) => {
     "/treasure-hunts",
     async (request, reply) => {
       try {
+        console.log("successful post");
         console.log(request.query.name);
         const { rows } = await fastify.pg.query(
           "SELECT id, created_by, name, treasure_hunt FROM treasure_hunts WHERE name=$1",
@@ -29,6 +31,7 @@ export const treasureHuntsRoutes = fastifyPlugin(async (fastify, options) => {
       } catch (err) {
         console.error(err);
       } finally {
+        console.log("replying to post");
         reply.send({ hello: "world" });
       }
     }
