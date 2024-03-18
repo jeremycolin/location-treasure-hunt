@@ -9,7 +9,7 @@ async function startServer() {
   server.register(helmet);
   await server.register(setupDatabase);
   server.register(treasureHuntsRoutes);
-  server.listen({ port: config.PORT }, (err, address) => {
+  server.listen({ port: config.PORT, host: config.HOST }, (err, address) => {
     if (err) {
       console.error(err);
     }
