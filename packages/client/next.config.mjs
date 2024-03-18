@@ -8,6 +8,7 @@ const nextConfig = {
       {
         source: "/api/:path",
         destination: `${API_URL}/:path*`,
+        permanent: true,
       },
     ];
   },
