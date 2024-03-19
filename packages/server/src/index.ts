@@ -5,7 +5,7 @@ import { setupDatabase } from "./database";
 import { treasureHuntsRoutes } from "./treasure-hunts";
 
 async function startServer() {
-  const server = fastify({ logger: true, ignoreTrailingSlash: true });
+  const server = fastify({ logger: true });
   server.register(helmet);
   await server.register(setupDatabase);
   server.register(treasureHuntsRoutes);

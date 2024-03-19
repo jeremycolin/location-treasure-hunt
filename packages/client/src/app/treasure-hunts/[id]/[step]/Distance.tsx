@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import styles from "./distance.module.css";
-import { distance1, distance2 } from "./haversine";
+import { distanceBetweenLatLon } from "./haversine";
 
 const GEOLOCATION_OPTIONS = {
   enableHighAccuracy: true,
@@ -22,22 +22,15 @@ export const Distance = ({
     }) => {
       console.log("pos", pos);
 
-      const d1 = distance1({
-        lat1: target.lat,
-        lat2: pos.coords.latitude,
-        lon1: pos.coords.longitude,
-        lon2: target.lon,
-      });
-      const d2 = distance2({
+      const d = distanceBetweenLatLon({
         lat1: target.lat,
         lat2: pos.coords.latitude,
         lon1: pos.coords.longitude,
         lon2: target.lon,
       });
 
-      console.log("d0", d1);
-      console.log("d2", d2);
-      setDistance(d1);
+      console.log("distance", d);
+      setDistance(d);
     };
 
     const onError = (err: { code: number; message: string }) => {
@@ -50,7 +43,13 @@ export const Distance = ({
       GEOLOCATION_OPTIONS
     );
     return () => navigator.geolocation.clearWatch(watcher);
-  }, []);
+  }, [target]);
 
-  return <div className={styles.main}>{`YOU ARE ${distance} meters away`}</div>;
+  return (
+    <div className={styles.main}>
+      {distance < 100
+        ? "GG!"
+        : `You are less than ${Math.ceil(distance / 1e3)} km away`}
+    </div>
+  );
 };
